@@ -1,9 +1,5 @@
 from django.contrib import admin
-from issue.models import *
+from issue.models import Issue
 
-class IssueAdmin(admin.ModelAdmin):
-    prepopulated_fields = {"slug": ("title",)}
-
-admin.site.register(Issue, IssueAdmin)
-
+admin.site.register(Issue)
 

@@ -1,12 +1,7 @@
 from django.contrib import admin
-from slot.models import *
-from django.contrib.contenttypes import generic
-
-class SlottedObjectInline(generic.GenericTabularInline):
-    model = SlottedObject
+from slot.models import Slot
 
 class SlotAdmin(admin.ModelAdmin):
-    list_display = ('verbose_name', 'section', 'issue')
-    filter = ('section', 'issue')
+    list_display = (name, 'verbose_name')
 
 admin.site.register(Slot, SlotAdmin)

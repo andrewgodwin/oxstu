@@ -1,7 +1,7 @@
 from django.contrib import admin
-from printissue.models import *
+from printissue.models import IssuePrintEdition
 
 class IssuePrintEditionAdmin(admin.ModelAdmin):
-    list_display = ("id", "issue", "section")
+    list_display = ("issue", "section")
 
 admin.site.register(IssuePrintEdition, IssuePrintEditionAdmin)

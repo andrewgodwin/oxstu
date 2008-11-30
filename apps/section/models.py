@@ -10,41 +10,27 @@ class Section(models.Model):
     """
         
     parent  = models.ForeignKey("self", null=True, related_name='children')
-    title   = models.CharField(max_length=255)
-    slug    = models.SlugField()
+    title   = models.CharField(max_length=255, unique=True)
+    slug    = models.SlugField(unique=True)
     order   = models.IntegerField(default=0)
     
-    def get_section(sections_list):
-        """
-        This function takes a list of sections and returns the child node (last in list).
-        Raises a 404 if the list is not a valid tree.
-        """
-        node = sections_list[0]
-        for section in sections_list[1:]:
-            if section.parent != node:
-                raise Http404("Cannot find section '%s'" % section)
-            else:
-                node = section
-        return node
-
-    def parent_object_list(self):
-        return self.get_ancestors()
-
+    @property
     def partname(self):
         if not self.parent:
             return self.title
         else:
             return self.parent.partname() + " > " + self.title
     
+    @classmethod
+    def get_roots():
+        return Section.objects.filter(parent=None)
+
     def __unicode__(self):
-        return u"Section '%s'" % (self.partname())
+        return u"Section '%s'" % (self.partname)
     
     class Meta:
-        unique_together = (("parent", "title"),)
-    
-    class Admin:
-        list_display=('id','title','order')
-        ordering=["order"]
+        unique_together = (('parent', 'title'),)
+        ordering = ('order',)
 
 mptt.register(Section, order_insertion_by=['order'])
 

@@ -1,9 +1,9 @@
 from django.contrib import admin
-from section.models import *
+from section.models import Section
 
 class SectionAdmin(admin.ModelAdmin):
-    list_display=('id','title','order')
-    ordering=["order"]
+    list_display=('title', 'parent')
+    ordering=['order']
     prepopulated_fields = {"slug": ("title",)}
 
 admin.site.register(Section, SectionAdmin)
