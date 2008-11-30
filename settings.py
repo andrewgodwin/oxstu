@@ -106,6 +106,7 @@ INSTALLED_APPS = (
     'pagination',
     'timezones',
     'ajax_validation',
+    'account',
 
     # stuff we use
     #'mptt',

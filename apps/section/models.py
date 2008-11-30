@@ -9,7 +9,7 @@ class Section(models.Model):
     sections all the way down...
     """
         
-    parent  = models.ForeignKey('self', null=True, related_name='children')
+    parent  = models.ForeignKey('self', blank=True, null=True, related_name='children')
     title   = models.CharField(max_length=255, unique=True)
     slug    = models.SlugField(unique=True)
     order   = models.IntegerField(default=0)
