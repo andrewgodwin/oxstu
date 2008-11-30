@@ -37,7 +37,6 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-
 MEDIA_ROOT = os.path.join(os.path.dirname(__file__), "site_media")
 
 # URL that handles the media served from MEDIA_ROOT.
@@ -106,13 +105,15 @@ INSTALLED_APPS = (
     'pagination',
     'timezones',
     'ajax_validation',
-    
-    # internal (for now)
-    'basic_profiles',
-    'account',
-    'misc',
-    
-    'about',
+    'photologue',
+
+    # our stuff    
+    'core',
+    'issue',
+    'printissue',
+    'section',
+    'slot',
+    'story',
     
     'django.contrib.admin',
 
