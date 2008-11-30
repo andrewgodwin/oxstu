@@ -48,7 +48,7 @@ class Item(models.Model):
 
     @property
     def display(self):
-        return (state == PUBLISHED) && (self.date > datetime.now())
+        return (state == PUBLISHED) and (self.date > datetime.now())
 
     @property
     def date(self):
@@ -62,8 +62,8 @@ class Item(models.Model):
         return u"Item #%s" % (self.id,)
 
     class Meta:
-        ordering = ('-date',)
-        get_latest_by = 'date'
+        ordering = ('-issue__.date',)
+        get_latest_by = 'issue__date'
 
     def save(self, force_insert=False, force_update=False):
         self.updated_at = datetime.now()

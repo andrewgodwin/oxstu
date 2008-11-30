@@ -89,14 +89,15 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 INSTALLED_APPS = (
-    # included
+
+    # basic stuff
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.humanize',
     
-    # external
+    # stuff we don't use
     'notification', # must be first
     'django_openid',
     'emailconfirmation',
@@ -105,7 +106,11 @@ INSTALLED_APPS = (
     'pagination',
     'timezones',
     'ajax_validation',
+
+    # stuff we use
+    #'mptt',
     'photologue',
+    'django.contrib.admin',
 
     # our stuff    
     'core',
@@ -115,8 +120,6 @@ INSTALLED_APPS = (
     'slot',
     'story',
     
-    'django.contrib.admin',
-
 )
 
 ABSOLUTE_URL_OVERRIDES = {

@@ -1,5 +1,5 @@
 from django.db import models
-import mptt
+#import mptt
 
 class Section(models.Model):  
     """
@@ -9,7 +9,7 @@ class Section(models.Model):
     sections all the way down...
     """
         
-    parent  = models.ForeignKey("self", null=True, related_name='children')
+    parent  = models.ForeignKey('self', null=True, related_name='children')
     title   = models.CharField(max_length=255, unique=True)
     slug    = models.SlugField(unique=True)
     order   = models.IntegerField(default=0)
@@ -32,5 +32,5 @@ class Section(models.Model):
         unique_together = (('parent', 'title'),)
         ordering = ('order',)
 
-mptt.register(Section, order_insertion_by=['order'])
+#mptt.register(Section, order_insertion_by=['order'])
 

@@ -9,7 +9,7 @@ from core.models import Item
 
 class FilteredItemsManager(models.Manager):
     def get_query_set(self, issue, section):
-        return super(models.Manager, self).get_query_set().filter(issue=issue, section=section).[0:self.n_items]
+        return super(models.Manager, self).get_query_set().filter(issue=issue, section=section)[0:self.n_items]
 
 class Slot(models.Model):
     """
@@ -18,7 +18,7 @@ class Slot(models.Model):
     then they will not appear in the manager.
     """
 
-    items = models.ManyToManyField(Items, through='SlotItems')
+    items = models.ManyToManyField(Item, through='SlotItem')
 
     name = models.SlugField(unique=True)
     verbose_name = models.CharField(max_length=255)
@@ -29,7 +29,7 @@ class Slot(models.Model):
     def __unicode__(self):
         return u"Slot '%s'" % (self.verbose_name,)
 
-class SlotItems(models.Model):
+class SlotItem(models.Model):
     """
     The join table between slots and items
     """

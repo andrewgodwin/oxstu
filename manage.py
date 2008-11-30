@@ -22,6 +22,7 @@ if path:
 sys.path.insert(0, join(settings.PINAX_ROOT, "apps/external_apps"))
 sys.path.insert(0, join(settings.PINAX_ROOT, "apps/local_apps"))
 sys.path.insert(0, join(settings.PROJECT_ROOT, "apps"))
+sys.path.insert(0, join(settings.PROJECT_ROOT, "libs"))
 
 if __name__ == "__main__":
     execute_from_command_line()
